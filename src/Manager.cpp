@@ -17,13 +17,21 @@ void Manager::Initialize()
 
 void Manager::Update()
 {
-    Texture2D texture = LoadTexture("assets/images/europe.png");
+    Texture2D map = LoadTexture("assets/images/europe.png");
+
     Texture2D buttonfrance = LoadTexture("assets/images/france.png");
+    Texture2D buttonbulgaria = LoadTexture("assets/images/bulgaria.png");
 
-    float frameHeight = (float)buttonfrance.height/NUM_FRAMES;
-    Rectangle sourceRec = { 0, 0, (float)buttonfrance.width, 55 };
+    float frameHeightmap = (float)map.height/NUM_FRAMES;
+    Rectangle sourceRecmap = { 0, 0, (float)map.width, 1500 };
+    float frameHeightfrance = (float)buttonfrance.height/NUM_FRAMES;
+    Rectangle sourceRecfrance = { 0, 0, (float)buttonfrance.width, 55 };
+    float frameHeightbulgaria = (float)buttonbulgaria.height/NUM_FRAMES;
+    Rectangle sourceRecbulgaria = { 0, 0, (float)buttonbulgaria.width, 200 };
 
-    Rectangle btnBounds = { 400, 675, (float)buttonfrance.width, frameHeight };
+    Rectangle Boundsmap = { -120, 0, (float)map.width, frameHeightmap };
+    Rectangle btnBoundsfrance = { 400, 675, (float)buttonfrance.width, frameHeightfrance };
+    Rectangle btnBoundsbulgaria = { 100, 200, (float)buttonbulgaria.width, frameHeightbulgaria };
 
     int btnState = 0;
 
@@ -31,20 +39,21 @@ void Manager::Update()
 
     mousePoint = GetMousePosition();
 
-        if (CheckCollisionPointRec(mousePoint, btnBounds))
+        if (CheckCollisionPointRec(mousePoint, btnBoundsfrance))
         {
         }
         else btnState = 0;
 
-    sourceRec.y = btnState*frameHeight;
+    sourceRecfrance.y = btnState*frameHeightfrance;
 
     BeginDrawing();
 
-        ClearBackground(RED);
+        ClearBackground(BLACK);
 
-        DrawTexture(texture, -120, 0, WHITE);
+        DrawTextureRec(map, sourceRecmap, {Boundsmap.x, Boundsmap.y }, WHITE);
 
-        DrawTextureRec(buttonfrance, sourceRec, {btnBounds.x, btnBounds.y }, WHITE);
+        DrawTextureRec(buttonfrance, sourceRecfrance, {btnBoundsfrance.x, btnBoundsfrance.y }, WHITE);
+        // DrawTextureRec(buttonbulgaria, sourceRecbulgaria, {btnBoundsbulgaria.x, btnBoundsbulgaria.y }, WHITE); 
 
     EndDrawing();
 }   
