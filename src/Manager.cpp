@@ -18,12 +18,12 @@ void Manager::Initialize()
 void Manager::Update()
 {
     Texture2D texture = LoadTexture("assets/images/europe.png");
-    Texture2D button = LoadTexture("assets/images/france.png");
+    Texture2D buttonfrance = LoadTexture("assets/images/france.png");
 
-    float frameHeight = (float)button.height/NUM_FRAMES;
-    Rectangle sourceRec = { 0, 0, (float)button.width, frameHeight };
+    float frameHeight = (float)buttonfrance.height/NUM_FRAMES;
+    Rectangle sourceRec = { 0, 0, (float)buttonfrance.width, 55 };
 
-    Rectangle btnBounds = { SCREEN_WIDTH/2.0f - button.width/2.0f, SCREEN_HEIGHT/2.0f - button.height/NUM_FRAMES/2.0f, (float)button.width, frameHeight };
+    Rectangle btnBounds = { 400, 675, (float)buttonfrance.width, frameHeight };
 
     int btnState = 0;
 
@@ -34,6 +34,7 @@ void Manager::Update()
         // Check button state
         if (CheckCollisionPointRec(mousePoint, btnBounds))
         {
+            
         }
         else btnState = 0;
 
@@ -45,7 +46,7 @@ void Manager::Update()
 
         DrawTexture(texture, -120, 0, WHITE);
 
-        DrawTextureRec(button, sourceRec, {btnBounds.x, btnBounds.y }, WHITE);
+        DrawTextureRec(buttonfrance, sourceRec, {btnBounds.x, btnBounds.y }, WHITE);
 
     EndDrawing();
 }   
