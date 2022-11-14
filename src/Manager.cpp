@@ -31,10 +31,8 @@ void Manager::Update()
 
     mousePoint = GetMousePosition();
 
-        // Check button state
         if (CheckCollisionPointRec(mousePoint, btnBounds))
         {
-            
         }
         else btnState = 0;
 
