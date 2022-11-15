@@ -29,7 +29,7 @@ void Manager::Update()
     float frameHeightbulgaria = (float)buttonbulgaria.height/NUM_FRAMES;
     Rectangle sourceRecbulgaria = { 0, 0, (float)buttonbulgaria.width, 200 };
 
-    Rectangle Boundsmap = { -120, 0, (float)map.width, frameHeightmap };
+    Rectangle Boundsmap = { 0, 0, (float)map.width, frameHeightmap };
     Rectangle btnBoundsfrance = { 400, 675, (float)buttonfrance.width, frameHeightfrance };
     Rectangle btnBoundsbulgaria = { 100, 200, (float)buttonbulgaria.width, frameHeightbulgaria };
 
@@ -53,7 +53,7 @@ void Manager::Update()
         DrawTextureRec(map, sourceRecmap, {Boundsmap.x, Boundsmap.y }, WHITE);
 
         DrawTextureRec(buttonfrance, sourceRecfrance, {btnBoundsfrance.x, btnBoundsfrance.y }, WHITE);
-        // DrawTextureRec(buttonbulgaria, sourceRecbulgaria, {btnBoundsbulgaria.x, btnBoundsbulgaria.y }, WHITE); 
+        DrawTextureRec(buttonbulgaria, sourceRecbulgaria, {btnBoundsbulgaria.x, btnBoundsbulgaria.y }, WHITE); 
 
     EndDrawing();
 }   
