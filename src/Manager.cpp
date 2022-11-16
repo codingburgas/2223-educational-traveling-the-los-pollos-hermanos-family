@@ -6,13 +6,11 @@ bool shouldExit = false;
 
 void Manager::Initialize()
 {
-    InitWindow(SCREEN_WIDTH, SCREEN_HEIGHT, "Europe");
+    InitWindow(0, 0, "Europe");
 
     SetTargetFPS(60);
 
     SetWindowSize(GetMonitorWidth(0), GetMonitorHeight(0));
-
-    ToggleFullscreen();
 }
 
 void Manager::Update()
@@ -21,16 +19,13 @@ void Manager::Update()
 
     Texture2D buttonfrance = LoadTexture("assets/images/france.png");
     Texture2D buttonbulgaria = LoadTexture("assets/images/bulgaria.png");
-
-    float frameHeightmap = (float)map.height/NUM_FRAMES;
-    Rectangle sourceRecmap = { 0, 0, (float)map.width, 1500 };
+    
     float frameHeightfrance = (float)buttonfrance.height/NUM_FRAMES;
-    Rectangle sourceRecfrance = { 0, 0, (float)buttonfrance.width, 55 };
+    Rectangle sourceRecfrance = { 0, 0, (float)buttonfrance.width, 100 };
     float frameHeightbulgaria = (float)buttonbulgaria.height/NUM_FRAMES;
     Rectangle sourceRecbulgaria = { 0, 0, (float)buttonbulgaria.width, 200 };
 
-    Rectangle Boundsmap = { 0, 0, (float)map.width, frameHeightmap };
-    Rectangle btnBoundsfrance = { 400, 675, (float)buttonfrance.width, frameHeightfrance };
+    Rectangle btnBoundsfrance = { 480, 675, (float)buttonfrance.width, frameHeightfrance };
     Rectangle btnBoundsbulgaria = { 100, 200, (float)buttonbulgaria.width, frameHeightbulgaria };
 
     int btnState = 0;
@@ -48,12 +43,12 @@ void Manager::Update()
 
     BeginDrawing();
 
-        ClearBackground(BLACK);
+        ClearBackground(WHITE);
 
-        DrawTextureRec(map, sourceRecmap, {Boundsmap.x, Boundsmap.y }, WHITE);
+        DrawTexture(map, 0, 0, WHITE);
 
         DrawTextureRec(buttonfrance, sourceRecfrance, {btnBoundsfrance.x, btnBoundsfrance.y }, WHITE);
-        DrawTextureRec(buttonbulgaria, sourceRecbulgaria, {btnBoundsbulgaria.x, btnBoundsbulgaria.y }, WHITE); 
+        // DrawTextureRec(buttonbulgaria, sourceRecbulgaria, {btnBoundsbulgaria.x, btnBoundsbulgaria.y }, WHITE); 
 
     EndDrawing();
 }   
