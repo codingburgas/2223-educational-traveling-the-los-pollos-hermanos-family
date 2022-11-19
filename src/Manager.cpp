@@ -10,6 +10,7 @@ bool shouldExit = false;
 Texture2D map;
 
 Texture2D buttonAustria;
+Texture2D buttonBelarus;
 Texture2D buttonBelgium;
 Texture2D buttonBulgaria;
 Texture2D buttonDenmark;
@@ -43,6 +44,7 @@ void Manager::Initialize()
     map = LoadTexture("assets/images/europe.png");
 
     buttonAustria = LoadTexture("assets/images/austria.png");
+    buttonBelarus = LoadTexture("assets/images/belarus.png");
     buttonBelgium = LoadTexture("assets/images/belgium.png");
     buttonBulgaria = LoadTexture("assets/images/bulgaria.png");
     buttonDenmark = LoadTexture("assets/images/denmark.png");
@@ -73,6 +75,11 @@ void Manager::Update()
     Rectangle sourceRecAustria = { 0, 0, (float)buttonAustria.width, 20 };
     Rectangle btnBoundsAustria = { 415, 445, (float)buttonAustria.width, (float)frameHeightAustria };
     buttons.push_back(btnBoundsAustria);
+
+    int frameHeightBelarus = buttonBelarus.height/NUM_FRAMES;
+    Rectangle sourceRecBelarus = { 0, 0, (float)buttonBelarus.width, 40 };
+    Rectangle btnBoundsBelarus = { 500, 340, (float)buttonBelarus.width, (float)frameHeightBelarus };
+    buttons.push_back(btnBoundsBelarus);
 
     int frameHeightBelgium = buttonBelgium.height/NUM_FRAMES;
     Rectangle sourceRecBelgium = { 0, 0, (float)buttonBelgium.width, 20 };
@@ -195,6 +202,7 @@ void Manager::Update()
         }
 
         DrawTextureRec(buttonAustria, sourceRecAustria, {btnBoundsAustria.x, btnBoundsAustria.y }, WHITE);
+        DrawTextureRec(buttonBelarus, sourceRecBelarus, {btnBoundsBelarus.x, btnBoundsBelarus.y }, WHITE);
         DrawTextureRec(buttonBelgium, sourceRecBelgium, {btnBoundsBelgium.x, btnBoundsBelgium.y }, WHITE);
         DrawTextureRec(buttonBulgaria, sourceRecBulgaria, {btnBoundsBulgaria.x, btnBoundsBulgaria.y }, WHITE); 
         DrawTextureRec(buttonDenmark, sourceRecDenmark, {btnBoundsDenmark.x, btnBoundsDenmark.y }, WHITE); 
