@@ -134,7 +134,7 @@ void Manager::Update()
 
     int frameHeightRussia = buttonRussia.height/NUM_FRAMES;
     Rectangle sourceRecRussia = { 0, 0, (float)buttonRussia.width, 100 };
-    Rectangle btnBoundsRussia = { 480, 675, (float)buttonRussia.width, (float)frameHeightRussia };
+    Rectangle btnBoundsRussia = { 800, 225, (float)buttonRussia.width, (float)frameHeightRussia };
     buttons.push_back(btnBoundsRussia);
 
     int frameHeightSerbia = buttonSerbia.height/NUM_FRAMES;
