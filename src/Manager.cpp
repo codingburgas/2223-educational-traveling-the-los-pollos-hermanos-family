@@ -14,6 +14,7 @@ Texture2D buttonBelarus;
 Texture2D buttonBelgium;
 Texture2D buttonBulgaria;
 Texture2D buttonDenmark;
+Texture2D buttonFinland;
 Texture2D buttonFrance;
 Texture2D buttonGermany;
 Texture2D buttonGreece;
@@ -48,6 +49,7 @@ void Manager::Initialize()
     buttonBelgium = LoadTexture("assets/images/belgium.png");
     buttonBulgaria = LoadTexture("assets/images/bulgaria.png");
     buttonDenmark = LoadTexture("assets/images/denmark.png");
+    buttonFinland = LoadTexture("assets/images/finland.png");
     buttonFrance = LoadTexture("assets/images/france.png");
     buttonGermany = LoadTexture("assets/images/germany.png");
     buttonGreece = LoadTexture("assets/images/greece.png");
@@ -95,6 +97,11 @@ void Manager::Update()
     Rectangle sourceRecDenmark = { 0, 0, (float)buttonDenmark.width, 21 };
     Rectangle btnBoundsDenmark = { 320, 280, (float)buttonDenmark.width, (float)frameHeightDenmark };
     buttons.push_back(btnBoundsDenmark);
+
+    int frameHeightFinland = buttonFinland.height/NUM_FRAMES;
+    Rectangle sourceRecFinland = { 0, 0, (float)buttonFinland.width, 45 };
+    Rectangle btnBoundsFinland = { 522, 125, (float)buttonFinland.width, (float)frameHeightFinland };
+    buttons.push_back(btnBoundsFinland);
 
     int frameHeightFrance = buttonFrance.height/NUM_FRAMES;
     Rectangle sourceRecFrance = { 0, 0, (float)buttonFrance.width, 50 };
@@ -206,6 +213,7 @@ void Manager::Update()
         DrawTextureRec(buttonBelgium, sourceRecBelgium, {btnBoundsBelgium.x, btnBoundsBelgium.y }, WHITE);
         DrawTextureRec(buttonBulgaria, sourceRecBulgaria, {btnBoundsBulgaria.x, btnBoundsBulgaria.y }, WHITE); 
         DrawTextureRec(buttonDenmark, sourceRecDenmark, {btnBoundsDenmark.x, btnBoundsDenmark.y }, WHITE); 
+        DrawTextureRec(buttonFinland, sourceRecFinland, {btnBoundsFinland.x, btnBoundsFinland.y }, WHITE);
         DrawTextureRec(buttonFrance, sourceRecFrance, {btnBoundsFrance.x, btnBoundsFrance.y }, WHITE);
         DrawTextureRec(buttonGermany, sourceRecGermany, {btnBoundsGermany.x, btnBoundsGermany.y }, WHITE);
         DrawTextureRec(buttonGreece, sourceRecGreece, {btnBoundsGreece.x, btnBoundsGreece.y }, WHITE);
