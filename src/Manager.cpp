@@ -146,7 +146,7 @@ void Manager::Update()
 
     int frameHeightSpain = buttonSpain.height/NUM_FRAMES;
     Rectangle sourceRecSpain = { 0, 0, (float)buttonSpain.width, 50 };
-    Rectangle btnBoundsSpain = { 200, 500, (float)buttonSpain.width, (float)frameHeightSpain };
+    Rectangle btnBoundsSpain = { 80, 580, (float)buttonSpain.width, (float)frameHeightSpain };
     buttons.push_back(btnBoundsSpain);
 
     int frameHeightSweden = buttonSweden.height/NUM_FRAMES;
