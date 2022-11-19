@@ -158,13 +158,13 @@ void Manager::Update()
     buttons.push_back(btnBoundsTurkey);
 
     int frameHeightUK = buttonUK.height/NUM_FRAMES;
-    Rectangle sourceRecUK = { 0, 0, (float)buttonUK.width, 100 };
-    Rectangle btnBoundsUK = { 480, 675, (float)buttonUK.width, (float)frameHeightUK };
+    Rectangle sourceRecUK = { 0, 0, (float)buttonUK.width, 70 };
+    Rectangle btnBoundsUK = { 100, 290, (float)buttonUK.width, (float)frameHeightUK };
     buttons.push_back(btnBoundsUK);
 
     int frameHeightUkraine = buttonUkraine.height/NUM_FRAMES;
-    Rectangle sourceRecUkraine = { 0, 0, (float)buttonUkraine.width, 100 };
-    Rectangle btnBoundsUkraine = { 480, 675, (float)buttonUkraine.width, (float)frameHeightUkraine };
+    Rectangle sourceRecUkraine = { 0, 0, (float)buttonUkraine.width, 50 };
+    Rectangle btnBoundsUkraine = { 630, 385, (float)buttonUkraine.width, (float)frameHeightUkraine };
     buttons.push_back(btnBoundsUkraine);
     
     for (size_t i = 0; i < buttons.size(); i++)
