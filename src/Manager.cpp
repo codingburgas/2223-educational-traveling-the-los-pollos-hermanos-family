@@ -6,11 +6,9 @@ bool shouldExit = false;
 
 void Manager::Initialize()
 {
-    InitWindow(0, 0, "Europe");
+    InitWindow(1080, 720, "Europe");
 
     SetTargetFPS(60);
-
-    SetWindowSize(GetMonitorWidth(0), GetMonitorHeight(0));
 }
 
 void Manager::Update()
@@ -38,85 +36,85 @@ void Manager::Update()
     Texture2D buttonUK = LoadTexture("assets/images/uk.png");
     Texture2D buttonUkraine = LoadTexture("assets/images/ukraine.png");
 
-    float frameHeightAustria = buttonAustria.height/NUM_FRAMES;
-    Rectangle sourceRecAustria = { 0, 0, buttonAustria.width, 200 };
-    Rectangle btnBoundsAustria = { 100, 200, buttonAustria.width, frameHeightAustria };
+    int frameHeightAustria = buttonAustria.height/NUM_FRAMES;
+    Rectangle sourceRecAustria = { 0, 0, (float)buttonAustria.width, 20 };
+    Rectangle btnBoundsAustria = { 415, 445, (float)buttonAustria.width, (float)frameHeightAustria };
 
-    float frameHeightBelgium = buttonBelgium.height/NUM_FRAMES;
-    Rectangle sourceRecBelgium = { 0, 0, buttonBelgium.width, 200 };
-    Rectangle btnBoundsBelgium = { 100, 200, buttonBelgium.width, frameHeightBelgium };
+    int frameHeightBelgium = buttonBelgium.height/NUM_FRAMES;
+    Rectangle sourceRecBelgium = { 0, 0, (float)buttonBelgium.width, 20 };
+    Rectangle btnBoundsBelgium = { 180, 450, (float)buttonBelgium.width, (float)frameHeightBelgium };
 
-    float frameHeightBulgaria = buttonBulgaria.height/NUM_FRAMES;
-    Rectangle sourceRecBulgaria = { 0, 0, buttonBulgaria.width, 200 };
-    Rectangle btnBoundsBulgaria = { 100, 200, buttonBulgaria.width, frameHeightBulgaria };
+    int frameHeightBulgaria = buttonBulgaria.height/NUM_FRAMES;
+    Rectangle sourceRecBulgaria = { 0, 0, (float)buttonBulgaria.width, 200 };
+    Rectangle btnBoundsBulgaria = { 100, 200, (float)buttonBulgaria.width, (float)frameHeightBulgaria };
 
-    float frameHeightDenmark = buttonDenmark.height/NUM_FRAMES;
-    Rectangle sourceRecDenmark = { 0, 0, buttonDenmark.width, 100 };
-    Rectangle btnBoundsDenmark = { 480, 675, buttonDenmark.width, frameHeightDenmark };
+    int frameHeightDenmark = buttonDenmark.height/NUM_FRAMES;
+    Rectangle sourceRecDenmark = { 0, 0, (float)buttonDenmark.width, 100 };
+    Rectangle btnBoundsDenmark = { 480, 300, (float)buttonDenmark.width, (float)frameHeightDenmark };
 
-    float frameHeightFrance = buttonFrance.height/NUM_FRAMES;
-    Rectangle sourceRecFrance = { 0, 0, buttonFrance.width, 100 };
-    Rectangle btnBoundsFrance = { 480, 675, buttonFrance.width, frameHeightFrance };
+    int frameHeightFrance = buttonFrance.height/NUM_FRAMES;
+    Rectangle sourceRecFrance = { 0, 0, (float)buttonFrance.width, 50 };
+    Rectangle btnBoundsFrance = { 180, 450, (float)buttonFrance.width, (float)frameHeightFrance };
 
-    float frameHeightGermany = buttonGermany.height/NUM_FRAMES;
-    Rectangle sourceRecGermany = { 0, 0, buttonGermany.width, 100 };
-    Rectangle btnBoundsGermany = { 480, 675, buttonGermany.width, frameHeightGermany };
+    int frameHeightGermany = buttonGermany.height/NUM_FRAMES;
+    Rectangle sourceRecGermany = { 0, 0, (float)buttonGermany.width, 100 };
+    Rectangle btnBoundsGermany = { 480, 675, (float)buttonGermany.width, (float)frameHeightGermany };
 
-    float frameHeightGreece = buttonGreece.height/NUM_FRAMES;
-    Rectangle sourceRecGreece = { 0, 0, buttonGreece.width, 100 };
-    Rectangle btnBoundsGreece = { 480, 675, buttonGreece.width, frameHeightGreece };
+    int frameHeightGreece = buttonGreece.height/NUM_FRAMES;
+    Rectangle sourceRecGreece = { 0, 0, (float)buttonGreece.width, 100 };
+    Rectangle btnBoundsGreece = { 400, 675, (float)buttonGreece.width, (float)frameHeightGreece };
 
-    float frameHeightItaly = buttonItaly.height/NUM_FRAMES;
-    Rectangle sourceRecItaly = { 0, 0, buttonItaly.width, 100 };
-    Rectangle btnBoundsItaly = { 480, 675, buttonItaly.width, frameHeightItaly };
+    int frameHeightItaly = buttonItaly.height/NUM_FRAMES;
+    Rectangle sourceRecItaly = { 0, 0, (float)buttonItaly.width, 100 };
+    Rectangle btnBoundsItaly = { 480, 675, (float)buttonItaly.width, (float)frameHeightItaly };
 
-    float frameHeightNetherlands = buttonNetherlands.height/NUM_FRAMES;
-    Rectangle sourceRecNetherlands = { 0, 0, buttonNetherlands.width, 100 };
-    Rectangle btnBoundsNetherlands = { 480, 675, buttonNetherlands.width, frameHeightNetherlands };
+    int frameHeightNetherlands = buttonNetherlands.height/NUM_FRAMES;
+    Rectangle sourceRecNetherlands = { 0, 0, (float)buttonNetherlands.width, 100 };
+    Rectangle btnBoundsNetherlands = { 480, 675, (float)buttonNetherlands.width, (float)frameHeightNetherlands };
 
-    float frameHeightNorway = buttonNorway.height/NUM_FRAMES;
-    Rectangle sourceRecNorway = { 0, 0, buttonNorway.width, 100 };
-    Rectangle btnBoundsNorway = { 480, 675, buttonNorway.width, frameHeightNorway };
+    int frameHeightNorway = buttonNorway.height/NUM_FRAMES;
+    Rectangle sourceRecNorway = { 0, 0, (float)buttonNorway.width, 100 };
+    Rectangle btnBoundsNorway = { 480, 675, (float)buttonNorway.width, (float)frameHeightNorway };
 
-    float frameHeightPoland = buttonPoland.height/NUM_FRAMES;
-    Rectangle sourceRecPoland = { 0, 0, buttonPoland.width, 100 };
-    Rectangle btnBoundsPoland = { 480, 675, buttonPoland.width, frameHeightPoland };
+    int frameHeightPoland = buttonPoland.height/NUM_FRAMES;
+    Rectangle sourceRecPoland = { 0, 0, (float)buttonPoland.width, 100 };
+    Rectangle btnBoundsPoland = { 480, 675, (float)buttonPoland.width, (float)frameHeightPoland };
 
-    float frameHeightPortugal = buttonPortugal.height/NUM_FRAMES;
-    Rectangle sourceRecPortugal = { 0, 0, buttonPortugal.width, 100 };
-    Rectangle btnBoundsPortugal = { 480, 675, buttonPortugal.width, frameHeightPortugal };
+    int frameHeightPortugal = buttonPortugal.height/NUM_FRAMES;
+    Rectangle sourceRecPortugal = { 0, 0, (float)buttonPortugal.width, 100 };
+    Rectangle btnBoundsPortugal = { 480, 675, (float)buttonPortugal.width, (float)frameHeightPortugal };
 
-    float frameHeightRomania = buttonRomania.height/NUM_FRAMES;
-    Rectangle sourceRecRomania = { 0, 0, buttonRomania.width, 100 };
-    Rectangle btnBoundsRomania = { 480, 675, buttonRomania.width, frameHeightRomania };
+    int frameHeightRomania = buttonRomania.height/NUM_FRAMES;
+    Rectangle sourceRecRomania = { 0, 0, (float)buttonRomania.width, 100 };
+    Rectangle btnBoundsRomania = { 480, 675, (float)buttonRomania.width, (float)frameHeightRomania };
 
-    float frameHeightRussia = buttonRussia.height/NUM_FRAMES;
-    Rectangle sourceRecRussia = { 0, 0, buttonRussia.width, 100 };
-    Rectangle btnBoundsRussia = { 480, 675, buttonRussia.width, frameHeightRussia };
+    int frameHeightRussia = buttonRussia.height/NUM_FRAMES;
+    Rectangle sourceRecRussia = { 0, 0, (float)buttonRussia.width, 100 };
+    Rectangle btnBoundsRussia = { 480, 675, (float)buttonRussia.width, (float)frameHeightRussia };
 
-    float frameHeightSerbia = buttonSerbia.height/NUM_FRAMES;
-    Rectangle sourceRecSerbia = { 0, 0, buttonSerbia.width, 100 };
-    Rectangle btnBoundsSerbia = { 480, 675, buttonSerbia.width, frameHeightSerbia };
+    int frameHeightSerbia = buttonSerbia.height/NUM_FRAMES;
+    Rectangle sourceRecSerbia = { 0, 0, (float)buttonSerbia.width, 100 };
+    Rectangle btnBoundsSerbia = { 480, 675, (float)buttonSerbia.width, (float)frameHeightSerbia };
 
-    float frameHeightSweden = buttonSweden.height/NUM_FRAMES;
-    Rectangle sourceRecSweden = { 0, 0, buttonSweden.width, 100 };
-    Rectangle btnBoundsSweden = { 480, 675, buttonSweden.width, frameHeightSweden };
+    int frameHeightSweden = buttonSweden.height/NUM_FRAMES;
+    Rectangle sourceRecSweden = { 0, 0, (float)buttonSweden.width, 100 };
+    Rectangle btnBoundsSweden = { 480, 675, (float)buttonSweden.width, (float)frameHeightSweden };
 
-    float frameHeightSwitzerland = buttonSwitzerland.height/NUM_FRAMES;
-    Rectangle sourceRecSwitzerland = { 0, 0, buttonSwitzerland.width, 100 };
-    Rectangle btnBoundsSwitzerland = { 480, 675, buttonSwitzerland.width, frameHeightSwitzerland };
+    int frameHeightSwitzerland = buttonSwitzerland.height/NUM_FRAMES;
+    Rectangle sourceRecSwitzerland = { 0, 0, (float)buttonSwitzerland.width, 100 };
+    Rectangle btnBoundsSwitzerland = { 480, 675, (float)buttonSwitzerland.width, (float)frameHeightSwitzerland };
 
-    float frameHeightTurkey = buttonTurkey.height/NUM_FRAMES;
-    Rectangle sourceRecTurkey = { 0, 0, buttonTurkey.width, 100 };
-    Rectangle btnBoundsTurkey = { 480, 675, buttonTurkey.width, frameHeightTurkey };
+    int frameHeightTurkey = buttonTurkey.height/NUM_FRAMES;
+    Rectangle sourceRecTurkey = { 0, 0, (float)buttonTurkey.width, 100 };
+    Rectangle btnBoundsTurkey = { 480, 675, (float)buttonTurkey.width, (float)frameHeightTurkey };
 
-    float frameHeightUK = buttonUK.height/NUM_FRAMES;
-    Rectangle sourceRecUK = { 0, 0, buttonUK.width, 100 };
-    Rectangle btnBoundsUK = { 480, 675, buttonUK.width, frameHeightUK };
+    int frameHeightUK = buttonUK.height/NUM_FRAMES;
+    Rectangle sourceRecUK = { 0, 0, (float)buttonUK.width, 100 };
+    Rectangle btnBoundsUK = { 480, 675, (float)buttonUK.width, (float)frameHeightUK };
 
-    float frameHeightUkraine = buttonUkraine.height/NUM_FRAMES;
-    Rectangle sourceRecUkraine = { 0, 0, buttonUkraine.width, 100 };
-    Rectangle btnBoundsUkraine = { 480, 675, buttonUkraine.width, frameHeightUkraine };
+    int frameHeightUkraine = buttonUkraine.height/NUM_FRAMES;
+    Rectangle sourceRecUkraine = { 0, 0, (float)buttonUkraine.width, 100 };
+    Rectangle btnBoundsUkraine = { 480, 675, (float)buttonUkraine.width, (float)frameHeightUkraine };
 
     int btnStateFrance = 0;
 
@@ -137,8 +135,26 @@ void Manager::Update()
 
         DrawTexture(map, 0, 0, WHITE);
 
+        DrawTextureRec(buttonAustria, sourceRecAustria, {btnBoundsAustria.x, btnBoundsAustria.y }, WHITE); 
+        DrawTextureRec(buttonBelgium, sourceRecBelgium, {btnBoundsBelgium.x, btnBoundsBelgium.y }, WHITE); 
         DrawTextureRec(buttonBulgaria, sourceRecBulgaria, {btnBoundsBulgaria.x, btnBoundsBulgaria.y }, WHITE); 
+        DrawTextureRec(buttonDenmark, sourceRecDenmark, {btnBoundsDenmark.x, btnBoundsDenmark.y }, WHITE); 
         DrawTextureRec(buttonFrance, sourceRecFrance, {btnBoundsFrance.x, btnBoundsFrance.y }, WHITE);
+        DrawTextureRec(buttonGermany, sourceRecGermany, {btnBoundsGermany.x, btnBoundsGermany.y }, WHITE);
+        DrawTextureRec(buttonGreece, sourceRecGreece, {btnBoundsGreece.x, btnBoundsGreece.y }, WHITE);
+        DrawTextureRec(buttonItaly, sourceRecItaly, {btnBoundsItaly.x, btnBoundsItaly.y }, WHITE);
+        DrawTextureRec(buttonNetherlands, sourceRecNetherlands, {btnBoundsNetherlands.x, btnBoundsNetherlands.y }, WHITE);
+        DrawTextureRec(buttonNorway, sourceRecNorway, {btnBoundsNorway.x, btnBoundsNorway.y }, WHITE);
+        DrawTextureRec(buttonPoland, sourceRecPoland, {btnBoundsPoland.x, btnBoundsPoland.y }, WHITE);
+        DrawTextureRec(buttonPortugal, sourceRecPortugal, {btnBoundsPortugal.x, btnBoundsPortugal.y }, WHITE);
+        DrawTextureRec(buttonRomania, sourceRecRomania, {btnBoundsRomania.x, btnBoundsRomania.y }, WHITE);
+        DrawTextureRec(buttonRussia, sourceRecRussia, {btnBoundsRussia.x, btnBoundsRussia.y }, WHITE);
+        DrawTextureRec(buttonSerbia, sourceRecSerbia, {btnBoundsSerbia.x, btnBoundsSerbia.y }, WHITE);
+        DrawTextureRec(buttonSweden, sourceRecSweden, {btnBoundsSweden.x, btnBoundsSweden.y }, WHITE);
+        DrawTextureRec(buttonSwitzerland, sourceRecSwitzerland, {btnBoundsSwitzerland.x, btnBoundsSwitzerland.y }, WHITE);
+        DrawTextureRec(buttonTurkey, sourceRecTurkey, {btnBoundsTurkey.x, btnBoundsTurkey.y }, WHITE);
+        DrawTextureRec(buttonUK, sourceRecUK, {btnBoundsUK.x, btnBoundsUK.y }, WHITE);
+        DrawTextureRec(buttonUkraine, sourceRecUkraine, {btnBoundsUkraine.x, btnBoundsUkraine.y }, WHITE);
 
     EndDrawing();
 }   
