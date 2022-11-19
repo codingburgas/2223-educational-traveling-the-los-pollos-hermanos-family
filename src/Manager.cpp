@@ -153,8 +153,8 @@ void Manager::Update()
     buttons.push_back(btnBoundsSwitzerland);
 
     int frameHeightTurkey = buttonTurkey.height/NUM_FRAMES;
-    Rectangle sourceRecTurkey = { 0, 0, (float)buttonTurkey.width, 40 };
-    Rectangle btnBoundsTurkey = { 480, 675, (float)buttonTurkey.width, (float)frameHeightTurkey };
+    Rectangle sourceRecTurkey = { 0, 0, (float)buttonTurkey.width, 80 };
+    Rectangle btnBoundsTurkey = { 700, 590, (float)buttonTurkey.width, (float)frameHeightTurkey };
     buttons.push_back(btnBoundsTurkey);
 
     int frameHeightUK = buttonUK.height/NUM_FRAMES;
