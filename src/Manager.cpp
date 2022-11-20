@@ -33,6 +33,10 @@ Texture2D buttonTurkey;
 Texture2D buttonUK;
 Texture2D buttonUkraine;
 
+Texture2D buttonActivity1;
+Texture2D buttonActivity2;
+Texture2D buttonActivity3;
+
 bool drawRec = false;
 int buttonToDisplay;
 
@@ -67,6 +71,10 @@ void Manager::Initialize()
     buttonTurkey = LoadTexture("assets/images/turkey.png");
     buttonUK = LoadTexture("assets/images/uk.png");
     buttonUkraine = LoadTexture("assets/images/ukraine.png");
+
+    buttonActivity1 = LoadTexture("assets/images/activity 1.png");
+    buttonActivity2 = LoadTexture("assets/images/activity 2.png");
+    buttonActivity3 = LoadTexture("assets/images/activity 3.png");
 }
 
 void Manager::Update()
@@ -187,6 +195,23 @@ void Manager::Update()
     Rectangle sourceRecUkraine = { 0, 0, (float)buttonUkraine.width, 50 };
     Rectangle btnBoundsUkraine = { 630, 385, (float)buttonUkraine.width, (float)frameHeightUkraine };
     buttons.push_back(btnBoundsUkraine);
+
+
+
+    int frameHeightActivity1 = buttonActivity1.height/NUM_FRAMES;
+    Rectangle sourceRecActivity1 = { 0, 0, (float)buttonActivity1.width, 40 };
+    Rectangle btnBoundsActivity1 = { 0, 10, (float)buttonActivity1.width, (float)frameHeightActivity1 };
+    buttons.push_back(btnBoundsActivity1);
+
+    int frameHeightActivity2 = buttonActivity2.height/NUM_FRAMES;
+    Rectangle sourceRecActivity2 = { 0, 0, (float)buttonActivity2.width, 40 };
+    Rectangle btnBoundsActivity2 = { 0, 60, (float)buttonActivity2.width, (float)frameHeightActivity2 };
+    buttons.push_back(btnBoundsActivity2);
+
+    int frameHeightActivity3 = buttonActivity3.height/NUM_FRAMES;
+    Rectangle sourceRecActivity3 = { 0, 0, (float)buttonActivity3.width, 40 };
+    Rectangle btnBoundsActivity3 = { 0, 110, (float)buttonActivity3.width, (float)frameHeightActivity3 };
+    buttons.push_back(btnBoundsActivity3);
     
     for (size_t i = 0; i < buttons.size(); i++)
     {
@@ -205,7 +230,9 @@ void Manager::Update()
 
         if (drawRec)
         {
-            DrawRectangleRec(buttons[buttonToDisplay], GREEN);
+            DrawTextureRec(buttonActivity1, sourceRecActivity1, {btnBoundsActivity1.x, btnBoundsActivity1.y }, WHITE);
+            DrawTextureRec(buttonActivity2, sourceRecActivity2, {btnBoundsActivity2.x, btnBoundsActivity2.y }, WHITE);
+            DrawTextureRec(buttonActivity3, sourceRecActivity3, {btnBoundsActivity3.x, btnBoundsActivity3.y }, WHITE);
         }
 
         DrawTextureRec(buttonAustria, sourceRecAustria, {btnBoundsAustria.x, btnBoundsAustria.y }, WHITE);
