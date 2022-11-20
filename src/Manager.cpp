@@ -209,8 +209,8 @@ void Manager::Update()
     buttons.push_back(btnBoundsActivity2);
 
     int frameHeightActivity3 = buttonActivity3.height/NUM_FRAMES;
-    Rectangle sourceRecActivity3 = { 0, 0, (float)buttonActivity3.width, 40 };
-    Rectangle btnBoundsActivity3 = { 0, 110, (float)buttonActivity3.width, (float)frameHeightActivity3 };
+    Rectangle sourceRecActivity3 = { 0, 0, (float)buttonActivity3.width, 35 };
+    Rectangle btnBoundsActivity3 = { 5, 110, (float)buttonActivity3.width, (float)frameHeightActivity3 };
     buttons.push_back(btnBoundsActivity3);
     
     for (size_t i = 0; i < buttons.size(); i++)
