@@ -17,11 +17,11 @@ endif
 ERRFLAGS=-Wall -Wunused-variable -Wextra -Wno-enum-compare
 
 # Put header files here
-_DEPS=window.h Manager.hpp
+_DEPS=window.h Manager.hpp Menu.hpp
 DEPS=$(patsubst %, $(IDIR)/%, $(_DEPS))
 
 # Put cpp files but change extension to .o
-_OBJ=main.o Manager.o
+_OBJ=main.o Manager.o Menu.o
 OBJ=$(patsubst %, $(ODIR)/%, $(_OBJ))
 
 # Libraries
