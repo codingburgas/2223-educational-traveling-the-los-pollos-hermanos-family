@@ -11,12 +11,31 @@
   <br>
 
 
-<!-- ABOUT THE PROJECT -->
-## About The Project
 
 
 
-Hello, we are The-los-pollos-hermanos-family. We are a team of four people. Our goal is to make a game about educational travelling.
+## 📋 Description
+  
+The idea of this project was to create a C++ game based on an educational journey. In the game, you choose a country to start from and you can choose from several activities you want to do. The aim of the game is to reach certain points, then you win.
+
+## 🚀 Languages 
+  <p align="left"> 
+  <a href="https://www.cplusplus.com/"><img src="https://img.icons8.com/color/48/000000/c-plus-plus-logo.png" alt="C++"/></a>
+</a>
+ 
+  </p>
+
+## 🔧 Tools 
+  <p align="left"> 
+  <a href="https://visualstudio.microsoft.com/"><img src="https://img.icons8.com/fluency/48/000000/visual-studio.png" alt="Visual Studio 2019"/></a>
+  <a href="https://code.visualstudio.com/"><img src="https://img.icons8.com/color/48/000000/visual-studio-code-2019.png" alt="Visual Studio Code"/></a>
+  <a href="https://www.figma.com/"><img src="https://img.icons8.com/color/48/000000/figma--v1.png"/></a>
+    <a href="https://www.microsoft.com/en-ww/microsoft-365/word"><img src="https://img.icons8.com/fluency/48/000000/microsoft-word-2019.png" alt="MS Word logo" width=48px /></a>
+    <a href="https://www.microsoft.com/en-us/microsoft-365/powerpoint"><img src="https://img.icons8.com/fluency/48/000000/microsoft-powerpoint-2019.png" alt="MS PowerPoint logo" width=48px />
+
+
+    
+  </p> 
 
 </div>
 
