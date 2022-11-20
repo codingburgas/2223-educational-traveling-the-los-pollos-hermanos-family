@@ -16,6 +16,8 @@ public:
 
     void ToggleFullScreen();
 
+    void MakeSmall();
+
     int GetDisplayWidth() const;
 
     int GetDisplayHeight() const;
@@ -25,12 +27,12 @@ public:
     void UnloadTextures();
 
     void x(Rectangle rect, float rot, float alp, int sta, float frmsCounter, Texture2D star,
-        Texture2D setti, Texture2D rls, Texture2D exit, Texture2D nam, Rectangle playBnds, Rectangle settingsBnds, Rectangle rulesBnds,
+        Texture2D setti, Texture2D rls, Texture2D exitButton, Texture2D nam, Texture2D main, Rectangle playBnds, Rectangle settingsBnds, Rectangle rulesBnds,
         Rectangle exitBnds, Vector2 mouseLoc, bool isGameStillOn, Texture2D playHov, Texture2D optionsHov, Texture2D rulesHov,
         Texture2D exitHov);
 
  private:
-    Vector2 mousePoint = GetMousePosition();
+    Vector2 mousePoint = { 0.0f, 0.0f };
 
     Texture2D main;
     Texture2D name;

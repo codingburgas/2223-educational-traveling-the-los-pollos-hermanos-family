@@ -4,7 +4,7 @@
 #include <vector>
 #include <ctime>
 
-#define NUM_FRAMES  3 
+#define NUM_FRAMES 3 
 
 bool shouldExit = false;
 
@@ -65,12 +65,11 @@ std::vector<std::string> chosenActivities;
 
 Menu MainMenu;
 
+Texture2D background;
 Texture2D start;
 Texture2D options;
 Texture2D rules;
-Texture2D exit;
-
-bool inMenu = true;
+Texture2D exitButton;
 
 void Manager::Initialize()
 {
@@ -80,44 +79,45 @@ void Manager::Initialize()
 
     MainMenu.ToggleFullScreen();
 
-    map = LoadTexture("assets/images/europe.png");
+    map = LoadTexture("assets/countries/europe.png");
 
-    buttonAustria = LoadTexture("assets/images/austria.png");
-    buttonBelarus = LoadTexture("assets/images/belarus.png");
-    buttonBelgium = LoadTexture("assets/images/belgium.png");
-    buttonBulgaria = LoadTexture("assets/images/bulgaria.png");
-    buttonDenmark = LoadTexture("assets/images/denmark.png");
-    buttonFinland = LoadTexture("assets/images/finland.png");
-    buttonFrance = LoadTexture("assets/images/france.png");
-    buttonGermany = LoadTexture("assets/images/germany.png");
-    buttonGreece = LoadTexture("assets/images/greece.png");
-    buttonItaly = LoadTexture("assets/images/italy.png");
-    buttonNetherlands = LoadTexture("assets/images/netherlands.png");
-    buttonNorway = LoadTexture("assets/images/norway.png");
-    buttonPoland = LoadTexture("assets/images/poland.png");
-    buttonPortugal = LoadTexture("assets/images/portugal.png");
-    buttonRomania = LoadTexture("assets/images/romania.png");
-    buttonRussia = LoadTexture("assets/images/russia.png");
-    buttonSerbia = LoadTexture("assets/images/serbia.png");
-    buttonSpain = LoadTexture("assets/images/spain.png");
-    buttonSweden = LoadTexture("assets/images/sweden.png");
-    buttonSwitzerland = LoadTexture("assets/images/switzerland.png");
-    buttonTurkey = LoadTexture("assets/images/turkey.png");
-    buttonUK = LoadTexture("assets/images/uk.png");
-    buttonUkraine = LoadTexture("assets/images/ukraine.png");
+    buttonAustria = LoadTexture("assets/countries/austria.png");
+    buttonBelarus = LoadTexture("assets/countries/belarus.png");
+    buttonBelgium = LoadTexture("assets/countries/belgium.png");
+    buttonBulgaria = LoadTexture("assets/countries/bulgaria.png");
+    buttonDenmark = LoadTexture("assets/countries/denmark.png");
+    buttonFinland = LoadTexture("assets/countries/finland.png");
+    buttonFrance = LoadTexture("assets/countries/france.png");
+    buttonGermany = LoadTexture("assets/countries/germany.png");
+    buttonGreece = LoadTexture("assets/countries/greece.png");
+    buttonItaly = LoadTexture("assets/countries/italy.png");
+    buttonNetherlands = LoadTexture("assets/countries/netherlands.png");
+    buttonNorway = LoadTexture("assets/countries/norway.png");
+    buttonPoland = LoadTexture("assets/countries/poland.png");
+    buttonPortugal = LoadTexture("assets/countries/portugal.png");
+    buttonRomania = LoadTexture("assets/countries/romania.png");
+    buttonRussia = LoadTexture("assets/countries/russia.png");
+    buttonSerbia = LoadTexture("assets/countries/serbia.png");
+    buttonSpain = LoadTexture("assets/countries/spain.png");
+    buttonSweden = LoadTexture("assets/countries/sweden.png");
+    buttonSwitzerland = LoadTexture("assets/countries/switzerland.png");
+    buttonTurkey = LoadTexture("assets/countries/turkey.png");
+    buttonUK = LoadTexture("assets/countries/uk.png");
+    buttonUkraine = LoadTexture("assets/countries/ukraine.png");
 
-    buttonActivity1 = LoadTexture("assets/images/activity 1.png");
-    buttonActivity2 = LoadTexture("assets/images/activity 2.png");
-    buttonActivity3 = LoadTexture("assets/images/activity 3.png");
+    buttonActivity1 = LoadTexture("assets/buttons/activity1.png");
+    buttonActivity2 = LoadTexture("assets/buttons/activity2.png");
+    buttonActivity3 = LoadTexture("assets/buttons/activity3.png");
 
+    background = LoadTexture("assets/buttons/main.png");
     start = LoadTexture("assets/buttons/Start.png");
     options = LoadTexture("assets/buttons/Options.png");
     rules = LoadTexture("assets/buttons/Rules.png");
-    exit = LoadTexture("assets/buttons/Exit.png");
+    exitButton = LoadTexture("assets/buttons/Exit.png");
 
     MainMenu.x({ MainMenu.GetDisplayWidth() / 2.0f, -100, 150, 150 }, 0.0f, 1.0f, 0, 0, LoadTexture("assets/buttons/Start.png"),
         LoadTexture("assets/buttons/Options.png"), LoadTexture("assets/buttons/Rules.png"), LoadTexture("assets/buttons/Exit.png"),
-        LoadTexture("assets/buttons/name.png"),
+        LoadTexture("assets/buttons/name.png"), LoadTexture("assets/buttons/main.png"),
         { float(MainMenu.GetDisplayWidth() / 2 - 250 / 2 - 20), float(MainMenu.GetDisplayHeight() / 2 - 75 / 2 - 10), 250, 75 },
         { float(MainMenu.GetDisplayWidth() / 2 - 250 / 2 - 20), float(MainMenu.GetDisplayHeight() / 2 - 75 / 2 + 85), 250, 75 },
         { float(MainMenu.GetDisplayWidth() / 2 - 250 / 2 - 20), float(MainMenu.GetDisplayHeight() / 2 - 75 / 2 + 180), 250, 75 },
@@ -137,12 +137,13 @@ void Manager::Update()
     {
         BeginDrawing();
 
-            ClearBackground(ORANGE);
+            ClearBackground(ORANGE);    
 
+            DrawTexture(background, 0, 0, RAYWHITE);
             DrawTexture(start, MainMenu.GetDisplayWidth() / 2 - start.width / 2, MainMenu.GetDisplayHeight() / 2 - start.height / 2 - 10, RAYWHITE);
             DrawTexture(options, MainMenu.GetDisplayWidth() / 2 - options.width / 2, MainMenu.GetDisplayHeight() / 2 - options.height / 2 + 80, RAYWHITE);
             DrawTexture(rules, MainMenu.GetDisplayWidth() / 2 - rules.width / 2, MainMenu.GetDisplayHeight() / 2 - rules.height / 2 + 180, RAYWHITE);
-            DrawTexture(exit, MainMenu.GetDisplayWidth() / 2 - exit.width / 2, MainMenu.GetDisplayHeight() / 2 - exit.height / 2 + 270, RAYWHITE);
+            DrawTexture(exitButton, MainMenu.GetDisplayWidth() / 2 - exitButton.width / 2, MainMenu.GetDisplayHeight() / 2 - exitButton.height / 2 + 270, RAYWHITE);
             
             MainMenu.AllButtons();
 
@@ -276,7 +277,11 @@ void Manager::Update()
         int frameHeightActivity3 = buttonActivity3.height/NUM_FRAMES;
         Rectangle btnBoundsActivity3 = { 20, 110, (float)buttonActivity3.width, (float)frameHeightActivity3 };
         activities.push_back(btnBoundsActivity3);
-        
+
+        DrawRectangleRec(btnBoundsActivity1, GREEN);
+        DrawRectangleRec(btnBoundsActivity2, GREEN);
+        DrawRectangleRec(btnBoundsActivity3, GREEN);
+
         for (size_t i = 0; i < buttons.size(); i++)
         {
             bool buttonIsPressed = false;
@@ -304,12 +309,12 @@ void Manager::Update()
             DrawTexture(map, 0, 0, WHITE);
 
             std::string scoreText = "Score: " + std::to_string(score);
-            std::string exitText = "(Press 'Esc' to exit)";
+            std::string exitText = "(Press 'Esc' to exitButton)";
 
             if (timesClicked >= 5)
             {
                 DrawText(("Final " + scoreText).c_str(), 325, 340, 50, BLACK);
-                DrawText(exitText.c_str(), 380, 450, 26, BLACK);
+                DrawText(exitText.c_str(), 345, 450, 26, BLACK);
             }
 
             if (isClicked)

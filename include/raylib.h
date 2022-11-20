@@ -526,7 +526,7 @@ typedef enum {
     LOG_INFO,           // Info logging, used for program execution info
     LOG_WARNING,        // Warning logging, used on recoverable failures
     LOG_ERROR,          // Error logging, used on unrecoverable failures
-    LOG_FATAL,          // Fatal logging, used to abort program: exit(EXIT_FAILURE)
+    LOG_FATAL,          // Fatal logging, used to abort program: exitButton(EXIT_FAILURE)
     LOG_NONE            // Disable logging
 } TraceLogLevel;
 
@@ -1096,7 +1096,7 @@ RLAPI bool IsKeyPressed(int key);                             // Check if a key 
 RLAPI bool IsKeyDown(int key);                                // Check if a key is being pressed
 RLAPI bool IsKeyReleased(int key);                            // Check if a key has been released once
 RLAPI bool IsKeyUp(int key);                                  // Check if a key is NOT being pressed
-RLAPI void SetExitKey(int key);                               // Set a custom key to exit program (default is ESC)
+RLAPI void SetExitKey(int key);                               // Set a custom key to exitButton program (default is ESC)
 RLAPI int GetKeyPressed(void);                                // Get key pressed (keycode), call it multiple times for keys queued, returns 0 when the queue is empty
 RLAPI int GetCharPressed(void);                               // Get char pressed (unicode), call it multiple times for chars queued, returns 0 when the queue is empty
 
