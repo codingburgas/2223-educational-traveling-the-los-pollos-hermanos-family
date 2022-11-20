@@ -1,7 +1,9 @@
 #include "Manager.hpp"
 
 #include <iostream>
+#include <string>
 #include <vector>
+#include <ctime>
 
 #define NUM_FRAMES  3 
 
@@ -37,8 +39,30 @@ Texture2D buttonActivity1;
 Texture2D buttonActivity2;
 Texture2D buttonActivity3;
 
-bool drawRec = false;
-int buttonToDisplay;
+bool isClicked = false;
+
+bool hasGenerated = false;
+
+std::vector<size_t> buttonsPressed;
+
+int score = 0;
+
+int timesClicked = 0;
+
+std::vector<std::string> activityTypes = {
+    "Go shopping",
+    "Visit a museum",
+    "Eat at a restaurant",
+    "Go to a concert",
+    "Take a nap",
+    "Travel with a boat",
+    "Travel with a bus",
+    "Read a book",
+    "Drink a cup of coffee",
+    "Do nothing and relax"
+};
+
+std::vector<std::string> chosenActivities;
 
 void Manager::Initialize()
 {
@@ -80,6 +104,9 @@ void Manager::Initialize()
 void Manager::Update()
 {
     std::vector<Rectangle> buttons;
+    std::vector<Rectangle> activities;
+
+    srand(time(0));
 
     int frameHeightAustria = buttonAustria.height/NUM_FRAMES;
     Rectangle sourceRecAustria = { 0, 0, (float)buttonAustria.width, 20 };
@@ -196,29 +223,36 @@ void Manager::Update()
     Rectangle btnBoundsUkraine = { 630, 385, (float)buttonUkraine.width, (float)frameHeightUkraine };
     buttons.push_back(btnBoundsUkraine);
 
-
-
     int frameHeightActivity1 = buttonActivity1.height/NUM_FRAMES;
-    Rectangle sourceRecActivity1 = { 0, 0, (float)buttonActivity1.width, 40 };
-    Rectangle btnBoundsActivity1 = { 0, 10, (float)buttonActivity1.width, (float)frameHeightActivity1 };
-    buttons.push_back(btnBoundsActivity1);
+    Rectangle btnBoundsActivity1 = { 20, 10, (float)buttonActivity1.width, (float)frameHeightActivity1 };
+    activities.push_back(btnBoundsActivity1);
 
     int frameHeightActivity2 = buttonActivity2.height/NUM_FRAMES;
-    Rectangle sourceRecActivity2 = { 0, 0, (float)buttonActivity2.width, 40 };
-    Rectangle btnBoundsActivity2 = { 0, 60, (float)buttonActivity2.width, (float)frameHeightActivity2 };
-    buttons.push_back(btnBoundsActivity2);
+    Rectangle btnBoundsActivity2 = { 20, 60, (float)buttonActivity2.width, (float)frameHeightActivity2 };
+    activities.push_back(btnBoundsActivity2);
 
     int frameHeightActivity3 = buttonActivity3.height/NUM_FRAMES;
-    Rectangle sourceRecActivity3 = { 0, 0, (float)buttonActivity3.width, 35 };
-    Rectangle btnBoundsActivity3 = { 5, 110, (float)buttonActivity3.width, (float)frameHeightActivity3 };
-    buttons.push_back(btnBoundsActivity3);
+    Rectangle btnBoundsActivity3 = { 20, 110, (float)buttonActivity3.width, (float)frameHeightActivity3 };
+    activities.push_back(btnBoundsActivity3);
     
     for (size_t i = 0; i < buttons.size(); i++)
     {
-        if (CheckCollisionPointRec(GetMousePosition(), buttons[i]) && IsMouseButtonPressed(0))
+        bool buttonIsPressed = false;
+
+        for (auto index : buttonsPressed)
         {
-            drawRec = true;
-            buttonToDisplay = i;
+            if (i == index)
+            {
+                buttonIsPressed = true;
+                // Kliment shte te nabie
+                break;
+            }
+        }
+
+        if (CheckCollisionPointRec(GetMousePosition(), buttons[i]) && IsMouseButtonPressed(0) && !buttonIsPressed)
+        {
+            isClicked = true;
+            buttonsPressed.push_back(i);
         }
     }
     
@@ -228,36 +262,75 @@ void Manager::Update()
 
         DrawTexture(map, 0, 0, WHITE);
 
-        if (drawRec)
+        std::string scoreText = "Score: " + std::to_string(score);
+        std::string exitText = "(Press 'Esc' to exit)";
+
+        if (timesClicked >= 5)
         {
-            DrawTextureRec(buttonActivity1, sourceRecActivity1, {btnBoundsActivity1.x, btnBoundsActivity1.y }, WHITE);
-            DrawTextureRec(buttonActivity2, sourceRecActivity2, {btnBoundsActivity2.x, btnBoundsActivity2.y }, WHITE);
-            DrawTextureRec(buttonActivity3, sourceRecActivity3, {btnBoundsActivity3.x, btnBoundsActivity3.y }, WHITE);
+            DrawText(("Final " + scoreText).c_str(), 325, 340, 50, BLACK);
+            DrawText(exitText.c_str(), 380, 450, 26, BLACK);
         }
 
-        DrawTextureRec(buttonAustria, sourceRecAustria, {btnBoundsAustria.x, btnBoundsAustria.y }, WHITE);
-        DrawTextureRec(buttonBelarus, sourceRecBelarus, {btnBoundsBelarus.x, btnBoundsBelarus.y }, WHITE);
-        DrawTextureRec(buttonBelgium, sourceRecBelgium, {btnBoundsBelgium.x, btnBoundsBelgium.y }, WHITE);
-        DrawTextureRec(buttonBulgaria, sourceRecBulgaria, {btnBoundsBulgaria.x, btnBoundsBulgaria.y }, WHITE); 
-        DrawTextureRec(buttonDenmark, sourceRecDenmark, {btnBoundsDenmark.x, btnBoundsDenmark.y }, WHITE); 
-        DrawTextureRec(buttonFinland, sourceRecFinland, {btnBoundsFinland.x, btnBoundsFinland.y }, WHITE);
-        DrawTextureRec(buttonFrance, sourceRecFrance, {btnBoundsFrance.x, btnBoundsFrance.y }, WHITE);
-        DrawTextureRec(buttonGermany, sourceRecGermany, {btnBoundsGermany.x, btnBoundsGermany.y }, WHITE);
-        DrawTextureRec(buttonGreece, sourceRecGreece, {btnBoundsGreece.x, btnBoundsGreece.y }, WHITE);
-        DrawTextureRec(buttonItaly, sourceRecItaly, {btnBoundsItaly.x, btnBoundsItaly.y }, WHITE);
-        DrawTextureRec(buttonNetherlands, sourceRecNetherlands, {btnBoundsNetherlands.x, btnBoundsNetherlands.y }, WHITE);
-        DrawTextureRec(buttonNorway, sourceRecNorway, {btnBoundsNorway.x, btnBoundsNorway.y }, WHITE);
-        DrawTextureRec(buttonPoland, sourceRecPoland, {btnBoundsPoland.x, btnBoundsPoland.y }, WHITE);
-        DrawTextureRec(buttonPortugal, sourceRecPortugal, {btnBoundsPortugal.x, btnBoundsPortugal.y }, WHITE);
-        DrawTextureRec(buttonRomania, sourceRecRomania, {btnBoundsRomania.x, btnBoundsRomania.y }, WHITE);
-        DrawTextureRec(buttonRussia, sourceRecRussia, {btnBoundsRussia.x, btnBoundsRussia.y }, WHITE);
-        DrawTextureRec(buttonSerbia, sourceRecSerbia, {btnBoundsSerbia.x, btnBoundsSerbia.y }, WHITE);
-        DrawTextureRec(buttonSpain, sourceRecSpain, {btnBoundsSpain.x, btnBoundsSpain.y }, WHITE);
-        DrawTextureRec(buttonSweden, sourceRecSweden, {btnBoundsSweden.x, btnBoundsSweden.y }, WHITE);
-        DrawTextureRec(buttonSwitzerland, sourceRecSwitzerland, {btnBoundsSwitzerland.x, btnBoundsSwitzerland.y }, WHITE);
-        DrawTextureRec(buttonTurkey, sourceRecTurkey, {btnBoundsTurkey.x, btnBoundsTurkey.y }, WHITE);
-        DrawTextureRec(buttonUK, sourceRecUK, {btnBoundsUK.x, btnBoundsUK.y }, WHITE);
-        DrawTextureRec(buttonUkraine, sourceRecUkraine, {btnBoundsUkraine.x, btnBoundsUkraine.y }, WHITE);
+        if (isClicked)
+        {
+            if (!hasGenerated)
+            {
+                auto toChooseFrom = activityTypes;
+
+                for (int i = 0; i < 3; i++)
+                {
+                    int index = rand() % toChooseFrom.size();
+                    
+                    chosenActivities.push_back(toChooseFrom[index]);
+
+                    toChooseFrom.erase(toChooseFrom.begin() + index);
+                }
+            }
+
+            DrawText(chosenActivities[0].c_str(), btnBoundsActivity1.x, btnBoundsActivity1.y, 26, BLACK);
+            DrawText(chosenActivities[1].c_str(), btnBoundsActivity2.x, btnBoundsActivity2.y, 26, BLACK);
+            DrawText(chosenActivities[2].c_str(), btnBoundsActivity3.x, btnBoundsActivity3.y, 26, BLACK);
+        
+            for (auto activity : activities)
+            {
+                if (CheckCollisionPointRec(GetMousePosition(), activity) && IsMouseButtonPressed(0))
+                {
+                    score += (rand() % 3 + 1) * 10;
+                    timesClicked++;
+                    chosenActivities = {};
+                    isClicked = false;
+                }
+            }
+        }
+
+        if (timesClicked < 5)
+        {
+            DrawText(scoreText.c_str(), 200, 675, 26, BLACK);
+
+            DrawTextureRec(buttonAustria, sourceRecAustria, {btnBoundsAustria.x, btnBoundsAustria.y }, WHITE);
+            DrawTextureRec(buttonBelarus, sourceRecBelarus, {btnBoundsBelarus.x, btnBoundsBelarus.y }, WHITE);
+            DrawTextureRec(buttonBelgium, sourceRecBelgium, {btnBoundsBelgium.x, btnBoundsBelgium.y }, WHITE);
+            DrawTextureRec(buttonBulgaria, sourceRecBulgaria, {btnBoundsBulgaria.x, btnBoundsBulgaria.y }, WHITE); 
+            DrawTextureRec(buttonDenmark, sourceRecDenmark, {btnBoundsDenmark.x, btnBoundsDenmark.y }, WHITE); 
+            DrawTextureRec(buttonFinland, sourceRecFinland, {btnBoundsFinland.x, btnBoundsFinland.y }, WHITE);
+            DrawTextureRec(buttonFrance, sourceRecFrance, {btnBoundsFrance.x, btnBoundsFrance.y }, WHITE);
+            DrawTextureRec(buttonGermany, sourceRecGermany, {btnBoundsGermany.x, btnBoundsGermany.y }, WHITE);
+            DrawTextureRec(buttonGreece, sourceRecGreece, {btnBoundsGreece.x, btnBoundsGreece.y }, WHITE);
+            DrawTextureRec(buttonItaly, sourceRecItaly, {btnBoundsItaly.x, btnBoundsItaly.y }, WHITE);
+            DrawTextureRec(buttonNetherlands, sourceRecNetherlands, {btnBoundsNetherlands.x, btnBoundsNetherlands.y }, WHITE);
+            DrawTextureRec(buttonNorway, sourceRecNorway, {btnBoundsNorway.x, btnBoundsNorway.y }, WHITE);
+            DrawTextureRec(buttonPoland, sourceRecPoland, {btnBoundsPoland.x, btnBoundsPoland.y }, WHITE);
+            DrawTextureRec(buttonPortugal, sourceRecPortugal, {btnBoundsPortugal.x, btnBoundsPortugal.y }, WHITE);
+            DrawTextureRec(buttonRomania, sourceRecRomania, {btnBoundsRomania.x, btnBoundsRomania.y }, WHITE);
+            DrawTextureRec(buttonRussia, sourceRecRussia, {btnBoundsRussia.x, btnBoundsRussia.y }, WHITE);
+            DrawTextureRec(buttonSerbia, sourceRecSerbia, {btnBoundsSerbia.x, btnBoundsSerbia.y }, WHITE);
+            DrawTextureRec(buttonSpain, sourceRecSpain, {btnBoundsSpain.x, btnBoundsSpain.y }, WHITE);
+            DrawTextureRec(buttonSweden, sourceRecSweden, {btnBoundsSweden.x, btnBoundsSweden.y }, WHITE);
+            DrawTextureRec(buttonSwitzerland, sourceRecSwitzerland, {btnBoundsSwitzerland.x, btnBoundsSwitzerland.y }, WHITE);
+            DrawTextureRec(buttonTurkey, sourceRecTurkey, {btnBoundsTurkey.x, btnBoundsTurkey.y }, WHITE);
+            DrawTextureRec(buttonUK, sourceRecUK, {btnBoundsUK.x, btnBoundsUK.y }, WHITE);
+            DrawTextureRec(buttonUkraine, sourceRecUkraine, {btnBoundsUkraine.x, btnBoundsUkraine.y }, WHITE);
+        }
 
     EndDrawing();
 }   
