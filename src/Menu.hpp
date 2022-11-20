@@ -1,38 +1,36 @@
 #pragma once
 
 #include "raylib.h"
+#include "window.h"
 #include <string>
 
 class Menu
 {
 public:
     
-    Menu(int width, int height, std::string title);
+    bool inMenu = true;
 
-    ~Menu() noexcept;
+    Menu() {};
 
-    bool GameShouldClose() const;
+    ~Menu() {};
 
-    void toggleFullScreenWindow(int windowWidth, int windowHeight);
+    void ToggleFullScreen();
 
     int GetDisplayWidth() const;
 
     int GetDisplayHeight() const;
 
-    void allButtons();
-
-    void gettingMousePosition();
+    void AllButtons();
 
     void UnloadTextures();
 
-
     void x(Rectangle rect, float rot, float alp, int sta, float frmsCounter, Texture2D star,
-        Texture2D setti, Texture2D rls, Texture2D exit, Texture2D nam, Texture2D main,Rectangle playBnds, Rectangle settingsBnds, Rectangle rulesBnds,
+        Texture2D setti, Texture2D rls, Texture2D exit, Texture2D nam, Rectangle playBnds, Rectangle settingsBnds, Rectangle rulesBnds,
         Rectangle exitBnds, Vector2 mouseLoc, bool isGameStillOn, Texture2D playHov, Texture2D optionsHov, Texture2D rulesHov,
         Texture2D exitHov);
 
  private:
-    Vector2 mousePoint = { 0.0f, 0.0f };
+    Vector2 mousePoint = GetMousePosition();
 
     Texture2D main;
     Texture2D name;

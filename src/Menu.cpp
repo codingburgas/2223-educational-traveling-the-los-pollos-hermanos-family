@@ -1,28 +1,10 @@
  #include "Menu.hpp"
 
-Menu::Menu(int width, int height, std::string title)
-{
-    InitWindow(width, height, title.c_str());
-    SetWindowPosition(0, 0);
-    SetTargetFPS(60);
-}
-
-Menu::~Menu() noexcept
-{
-    CloseWindow();
-}
-
-bool Menu::GameShouldClose() const
-{
-    return WindowShouldClose() || !isRunning;
-}
-
 void Menu::x(Rectangle rect, float rot, float alp, int sta, float frmsCounter, Texture2D star,
-    Texture2D setti, Texture2D rls, Texture2D exi, Texture2D nam, Texture2D mai, Rectangle playBnds,
+    Texture2D setti, Texture2D rls, Texture2D exi, Texture2D nam, Rectangle playBnds,
     Rectangle settingsBnds, Rectangle rulesBnds, Rectangle exitBnds, Vector2 mouseLoc, bool isGameStillOn, Texture2D playHov,
     Texture2D optionsHov, Texture2D rulesHov, Texture2D exitHov)
 {
-    main = mai;
     rec = rect;
     rotation = rot;
     alpha = alp;
@@ -45,9 +27,11 @@ void Menu::x(Rectangle rect, float rot, float alp, int sta, float frmsCounter, T
     hoverexit = exitHov;
 }
 
-
-void Menu::toggleFullScreenWindow(int windowWidth, int windowHeight)
+void Menu::ToggleFullScreen()
 {
+    int windowWidth = GetDisplayWidth();
+    int windowHeight = GetDisplayHeight();
+
     if (!IsWindowFullscreen())
     {
         int monitor = GetCurrentMonitor();
@@ -85,11 +69,6 @@ int Menu::GetDisplayHeight() const
     }
 }
 
-void Menu::gettingMousePosition()
-{
-    mousePoint = GetMousePosition();
-}
-
 void Menu::UnloadTextures()
 {
     UnloadTexture(name);
@@ -99,11 +78,9 @@ void Menu::UnloadTextures()
     UnloadTexture(exit);
 }
 
-
-
-void Menu::allButtons()
+void Menu::AllButtons()
 {
-    gettingMousePosition();
+    mousePoint = GetMousePosition();
 
     if (CheckCollisionPointRec(mousePoint, playBounds))
     {
@@ -111,8 +88,8 @@ void Menu::allButtons()
 
         if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT))
         {
-            
             ClearBackground(BLUE);
+            inMenu = false;
         }
     }
 
@@ -121,10 +98,7 @@ void Menu::allButtons()
         DrawTexture(hoversettings, GetDisplayWidth() / 2 - hoversettings.width / 2 - 20, GetDisplayHeight() / 2 - hoversettings.height / 2 + 85, RAYWHITE);
 
         if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT))
-        {
-          
             ClearBackground(BLUE);
-        }
     }
 
     if (CheckCollisionPointRec(mousePoint, rulesBounds))
@@ -132,10 +106,7 @@ void Menu::allButtons()
         DrawTexture(hoverrules, GetDisplayWidth() / 2 - hoverrules.width / 2 - 20, GetDisplayHeight() / 2 - hoverrules.height / 2 + 180, RAYWHITE);
 
         if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT))
-        {
-            
             ClearBackground(BLUE);
-        }
     }
 
     if (CheckCollisionPointRec(mousePoint, exitBounds))
@@ -143,9 +114,7 @@ void Menu::allButtons()
         DrawTexture(hoverexit, GetDisplayWidth() / 2 - hoverexit.width / 2 - 20, GetDisplayHeight() / 2 - hoverexit.height / 2 + 275, RAYWHITE);
 
         if (IsMouseButtonDown(MOUSE_BUTTON_LEFT))
-        {
-            isRunning = false;
-        }
+            CloseWindow();
     }
 }
 

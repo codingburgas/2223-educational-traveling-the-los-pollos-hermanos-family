@@ -35,9 +35,9 @@
 *       [rcore] msf_gif (Miles Fogle) for GIF recording
 *       [rcore] sinfl (Micha Mettke) for DEFLATE decompression algorithm
 *       [rcore] sdefl (Micha Mettke) for DEFLATE compression algorithm
-*       [rtextures] stb_image (Sean Barret) for images loading (BMP, TGA, PNG, JPEG, HDR...)
-*       [rtextures] stb_image_write (Sean Barret) for image writing (BMP, TGA, PNG, JPG)
-*       [rtextures] stb_image_resize (Sean Barret) for image resizing algorithms
+*       [rassets/buttons] stb_image (Sean Barret) for images loading (BMP, TGA, PNG, JPEG, HDR...)
+*       [rassets/buttons] stb_image_write (Sean Barret) for image writing (BMP, TGA, PNG, JPG)
+*       [rassets/buttons] stb_image_resize (Sean Barret) for image resizing algorithms
 *       [rtext] stb_truetype (Sean Barret) for ttf fonts loading
 *       [rtext] stb_rect_pack (Sean Barret) for rectangles packing
 *       [rmodels] par_shapes (Philip Rideout) for parametric 3d shapes generation
@@ -850,13 +850,13 @@ typedef enum {
 
 // Color blending modes (pre-defined)
 typedef enum {
-    BLEND_ALPHA = 0,                // Blend textures considering alpha (default)
-    BLEND_ADDITIVE,                 // Blend textures adding colors
-    BLEND_MULTIPLIED,               // Blend textures multiplying colors
-    BLEND_ADD_COLORS,               // Blend textures adding colors (alternative)
-    BLEND_SUBTRACT_COLORS,          // Blend textures subtracting colors (alternative)
-    BLEND_ALPHA_PREMULTIPLY,        // Blend premultiplied textures considering alpha
-    BLEND_CUSTOM                    // Blend textures using custom src/dst factors (use rlSetBlendMode())
+    BLEND_ALPHA = 0,                // Blend assets/buttons considering alpha (default)
+    BLEND_ADDITIVE,                 // Blend assets/buttons adding colors
+    BLEND_MULTIPLIED,               // Blend assets/buttons multiplying colors
+    BLEND_ADD_COLORS,               // Blend assets/buttons adding colors (alternative)
+    BLEND_SUBTRACT_COLORS,          // Blend assets/buttons subtracting colors (alternative)
+    BLEND_ALPHA_PREMULTIPLY,        // Blend premultiplied assets/buttons considering alpha
+    BLEND_CUSTOM                    // Blend assets/buttons using custom src/dst factors (use rlSetBlendMode())
 } BlendMode;
 
 // Gesture
@@ -1217,7 +1217,7 @@ RLAPI bool CheckCollisionPointLine(Vector2 point, Vector2 p1, Vector2 p2, int th
 RLAPI Rectangle GetCollisionRec(Rectangle rec1, Rectangle rec2);                                         // Get collision rectangle for two rectangles collision
 
 //------------------------------------------------------------------------------------
-// Texture Loading and Drawing Functions (Module: textures)
+// Texture Loading and Drawing Functions (Module: assets/buttons)
 //------------------------------------------------------------------------------------
 
 // Image loading functions
